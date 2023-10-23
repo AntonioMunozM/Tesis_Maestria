@@ -11,3 +11,7 @@
 #define I2C_ADDRESS 0x48  
 
 float voltage = 0.0;
+
+//CONTADORES
+
+int i = 0;

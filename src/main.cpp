@@ -8,7 +8,7 @@ ADS1115_WE adc1 = ADS1115_WE(ADC1);
 ADS1115_WE adc2 = ADS1115_WE(ADC2);
 //ADS1115_WE adc2 = ADS1115_WE(ADC2);
 #include <02_Sensor_init.h>
-//#include <03_Funciones.h>
+#include <03_Funciones.h>
 
   /* Use this for the 16-bit version */
 
@@ -25,21 +25,12 @@ float readChannel(ADS1115_MUX channel);
 
 
 void setup() {
-  Serial.begin(9600);
-  Serial.println("queonda");
-  pinMode(Pin_velocidad, INPUT);
-  pinMode(Pin_frecuencia, INPUT);
-  pinMode(Pin_1wire, OUTPUT);
-  pinMode(Pin_ledverde, OUTPUT);
-  pinMode(Pin_ledrojo, OUTPUT);
-  pinMode(Pin_dac1, OUTPUT);
-  pinMode(Pin_dac2, OUTPUT);
-  Serial.println("Pines iniciados");
+  Serial.begin(115200);
+  Pin_Init();
   Wire.begin();
-  Serial.println("Biblioteca Wire iniciada");
   Setup_ADC1();
-  Setup_ADC2();
-
+  //Setup_ADC2();
+  inicio_led();
 }
 
 void loop() {
@@ -64,9 +55,3 @@ void loop() {
   delay(1000);
 }
 
-float readChannel(ADS1115_MUX channel) {
-  float voltage = 0.0;
-  adc1.setCompareChannels(channel);
-  voltage = adc1.getRawResult(); // alternative: getResult_mV for Millivolt
-  return voltage;
-}

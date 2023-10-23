@@ -1,11 +1,9 @@
-
-
 void Setup_ADC1() {
   if(!adc1.init()){
-    Serial.println("ADS1115 not connected!");
-    delay(10000);
-  }else{Serial.println("Se ha detectado un ADS1115");}
+    Serial.println("ADS1115-1 no conectado");
+  }else{Serial.println("ADS1115-1 conectado");}
 
+  delay(1000);
   /* Set the voltage range of the ADC to adjust the gain
    * Please note that you must not apply more than VDD + 0.3V to the input pins!
    * 
@@ -16,6 +14,7 @@ void Setup_ADC1() {
    * ADS1115_RANGE_0512  ->  +/- 512 mV
    * ADS1115_RANGE_0256  ->  +/- 256 mV
    */
+
   adc1.setVoltageRange_mV(ADS1115_RANGE_6144); //comment line/change parameter to change range
 
   /* Set the inputs to be compared
@@ -95,8 +94,6 @@ void Setup_ADC1() {
    */
   //adc.setAlertPinToConversionReady(); //uncomment if you want to change the default
 
-  Serial.println("ADS1115 Example Sketch - Continuous Mode");
-  Serial.println("All values in volts");
   Serial.println();
 }
 
@@ -110,11 +107,12 @@ void Setup_ADC1() {
    * rate will be much lower that the conversion rate if you change channels frequently. 
    */
 
-  void Setup_ADC2() {
+void Setup_ADC2() {
   if(!adc2.init()){
-    Serial.println("ADS1115 not connected!");
-    delay(10000);
-  }else{Serial.println("Se ha detectado un ADS1115");}
+    Serial.println("ADS1115-2 no conectado");
+  }else{Serial.println("ADS1115-2 conectado");}
+
+  delay(1000);
 
   /* Set the voltage range of the ADC to adjust the gain
    * Please note that you must not apply more than VDD + 0.3V to the input pins!
